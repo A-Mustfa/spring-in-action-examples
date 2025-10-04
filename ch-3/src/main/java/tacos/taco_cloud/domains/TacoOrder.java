@@ -7,19 +7,22 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
+@Entity
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
-    private Date placedAt;
+    private Date placedAt = new Date();
 
 
     @NotBlank(message="you must provide a value")
@@ -46,6 +49,8 @@ public class TacoOrder implements Serializable {
 
     @Digits(integer=3, fraction=0, message="invalid cvv")
     private String ccCVV;
+
+    @OneToMany(cascade = CascadeType.ALL )
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {

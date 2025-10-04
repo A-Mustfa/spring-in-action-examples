@@ -2,14 +2,11 @@ package tacos.taco_cloud.repositories;
 
 import java.util.Optional;
 
+import org.springframework.data.repository.CrudRepository;
+
 import tacos.taco_cloud.domains.Ingredients;
 
 
-public interface IngredientRepository {
+public interface IngredientRepository extends CrudRepository<Ingredients,String>{
 
-    Iterable<Ingredients> findAll();
-
-    Optional<Ingredients> findById(String id);
-
-    Ingredients save(Ingredients ingredient);
 }

@@ -10,8 +10,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import tacos.taco_cloud.JDBC.JDBCTacoOrderRepo;
 import tacos.taco_cloud.domains.TacoOrder;
+import tacos.taco_cloud.repositories.OrderRepository;
 
 
 
@@ -21,9 +21,9 @@ import tacos.taco_cloud.domains.TacoOrder;
 @Controller
 public class OrdersController {
 
-    private final JDBCTacoOrderRepo repo;
+    private final OrderRepository repo;
 
-    public OrdersController(JDBCTacoOrderRepo repo) {
+    public OrdersController(OrderRepository repo) {
         this.repo = repo;
     }
 

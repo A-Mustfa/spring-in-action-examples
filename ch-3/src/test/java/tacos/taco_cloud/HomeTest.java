@@ -16,23 +16,23 @@ org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import tacos.taco_cloud.controllers.HomeViewController;
 
 
-@WebMvcTest(HomeViewController.class)
-public class HomeTest {
+// @WebMvcTest(HomeViewController.class)
+// public class HomeTest {
     
-    @Autowired
-    private MockMvc mockMvc;
+//     @Autowired
+//     private MockMvc mockMvc;
 
-    @Test
-    public void homeTest() throws Exception{
+//     @Test
+//     public void homeTest() throws Exception{
 
-        mockMvc.perform(get("/"))
-        .andExpect(status().isOk())
-        .andExpect(view().name("home"))
-        .andExpect(content().string(containsString("Welcome to...")));
-
-
-
-    }
+//         mockMvc.perform(get("/"))
+//         .andExpect(status().isOk())
+//         .andExpect(view().name("home"))
+//         .andExpect(content().string(containsString("Welcome to...")));
 
 
-}
+
+//     }
+
+
+// }

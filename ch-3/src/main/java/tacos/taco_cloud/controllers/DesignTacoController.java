@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import tacos.taco_cloud.JDBC.JDBCIngredientRepository;
 import tacos.taco_cloud.domains.Ingredients;
 import tacos.taco_cloud.domains.Ingredients.Type;
 import tacos.taco_cloud.domains.Taco;
 import tacos.taco_cloud.domains.TacoOrder;
+import tacos.taco_cloud.repositories.IngredientRepository;
 
 
 
@@ -32,18 +32,17 @@ import tacos.taco_cloud.domains.TacoOrder;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    private final JDBCIngredientRepository jdbcIngredientRepository;
-
+    private final IngredientRepository iRepository;
     @Autowired
-    public DesignTacoController(JDBCIngredientRepository jdbcIngredientRepository) {
-        this.jdbcIngredientRepository = jdbcIngredientRepository;
+    public DesignTacoController(IngredientRepository iRepository) {
+        this.iRepository = iRepository;
     }
 
     @ModelAttribute
     public void addIngredientsToModel(Model model){
         List<Ingredients> ingredients =  new ArrayList<>();
 
-        jdbcIngredientRepository.findAll().forEach(i -> ingredients.add(i));
+        iRepository.findAll().forEach(i -> ingredients.add(i));
 
         Type [] type = Ingredients.Type.values();
         for(Type xtype : type){
